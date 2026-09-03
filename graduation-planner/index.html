@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>卒業単位チェッカー</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css">
+</head>
+
+<body>
+
+<header class="top-header">
+  <div class="header-inner">
+
+    <p class="service-label">
+      GRADUATION PLANNER
+    </p>
+
+    <h1>卒業単位チェッカー</h1>
+
+    <p class="university">
+      東洋大学 理工学部 機械工学科
+      <span>2024年度入学生</span>
+    </p>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- 基盤教育 -->
+  <section>
+
+    <div class="dashboard-title">
+
+      <div>
+        <p class="section-label">
+          BASIC EDUCATION
+        </p>
+
+        <h2>基盤教育科目</h2>
+      </div>
+
+      <div class="total-progress">
+        <span>取得単位</span>
+
+        <strong>
+          <span id="basicCredits">0</span>
+          <small>/ 20</small>
+        </strong>
+      </div>
+
+    </div>
+
+    <div class="progress-bar">
+      <div
+        id="basicProgressBar"
+        class="progress-fill">
+      </div>
+    </div>
+
+    <div class="status-grid">
+
+      <div class="status-card">
+        <p>哲学・思想</p>
+
+        <strong>
+          <span id="philosophyCredits">0</span>
+          <small>/ 2単位</small>
+        </strong>
+
+        <span
+          id="philosophyRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>国際人の形成</p>
+
+        <strong>
+          <span id="internationalCredits">0</span>
+          <small>/ 8単位</small>
+        </strong>
+
+        <span
+          id="internationalRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>外国語科目</p>
+
+        <strong>
+          <span id="foreignLanguageCredits">0</span>
+          <small>/ 6単位</small>
+        </strong>
+
+        <span
+          id="foreignLanguageRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>Technical English 必修</p>
+
+        <strong>
+          <span id="technicalRequiredCredits">0</span>
+          <small>/ 4単位</small>
+        </strong>
+
+        <span
+          id="technicalRequiredRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>Technical English 選択必修</p>
+
+        <strong>
+          <span id="technicalElectiveCredits">0</span>
+          <small>/ 2単位</small>
+        </strong>
+
+        <span
+          id="technicalElectiveRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+    </div>
+
+    <div
+      id="basicStatus"
+      class="graduation-status">
+    </div>
+
+  </section>
+
+
+  <!-- 理工学基盤科目 -->
+  <section>
+
+    <div class="dashboard-title">
+
+      <div>
+        <p class="section-label">
+          SCIENCE FOUNDATION
+        </p>
+
+        <h2>理工学基盤科目</h2>
+      </div>
+
+      <div class="total-progress">
+        <span>取得単位</span>
+
+        <strong>
+          <span id="scienceCredits">0</span>
+          <small>/ 20</small>
+        </strong>
+      </div>
+
+    </div>
+
+    <div class="progress-bar">
+      <div
+        id="scienceProgressBar"
+        class="progress-fill">
+      </div>
+    </div>
+
+    <div class="status-grid">
+
+      <div class="status-card">
+        <p>数学 必修</p>
+
+        <strong>
+          <span id="mathRequired">0</span>
+          <small>/ 6単位</small>
+        </strong>
+
+        <span
+          id="mathRequiredRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>数学 選択必修</p>
+
+        <strong>
+          <span id="mathElective">0</span>
+          <small>/ 3単位</small>
+        </strong>
+
+        <span
+          id="mathElectiveRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>物理 必修</p>
+
+        <strong>
+          <span id="physicsRequired">0</span>
+          <small>/ 2単位</small>
+        </strong>
+
+        <span
+          id="physicsRequiredRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>物理 選択必修</p>
+
+        <strong>
+          <span id="physicsElective">0</span>
+          <small>/ 4単位</small>
+        </strong>
+
+        <span
+          id="physicsElectiveRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>化学</p>
+
+        <strong>
+          <span id="chemistryCredits">0</span>
+          <small>/ 2単位</small>
+        </strong>
+
+        <span
+          id="chemistryRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>情報処理 必修</p>
+
+        <strong>
+          <span id="informationRequired">0</span>
+          <small>/ 1単位</small>
+        </strong>
+
+        <span
+          id="informationRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+    </div>
+
+    <div
+      id="scienceStatus"
+      class="graduation-status">
+    </div>
+
+  </section>
+
+
+  <!-- 専門科目 -->
+  <section>
+
+    <div class="dashboard-title">
+
+      <div>
+        <p class="section-label">
+          PROFESSIONAL
+        </p>
+
+        <h2>専門科目</h2>
+      </div>
+
+      <div class="total-progress">
+        <span>取得単位</span>
+
+        <strong>
+          <span id="professionalCredits">0</span>
+          <small>/ 70</small>
+        </strong>
+      </div>
+
+    </div>
+
+    <div class="progress-bar">
+      <div
+        id="professionalProgressBar"
+        class="progress-fill">
+      </div>
+    </div>
+
+    <div class="status-grid">
+
+      <div class="status-card">
+        <p>必修</p>
+
+        <strong>
+          <span id="professionalRequired">0</span>
+          <small>/ 15単位</small>
+        </strong>
+
+        <span
+          id="professionalRequiredRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>選択必修</p>
+
+        <strong>
+          <span id="professionalElective">0</span>
+          <small>/ 24単位</small>
+        </strong>
+
+        <span
+          id="professionalElectiveRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="status-card">
+        <p>基幹科目</p>
+
+        <strong>
+          <span id="coreCount">0</span>
+          <small>/ 4科目以上</small>
+        </strong>
+
+        <span
+          id="coreRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+    </div>
+
+    <div
+      id="professionalStatus"
+      class="graduation-status">
+    </div>
+
+  </section>
+
+
+  <!-- 卒業判定 -->
+  <section class="eligibility-section">
+
+    <div class="section-heading">
+      <p class="section-label">
+        GRADUATION
+      </p>
+
+      <h2>卒業判定</h2>
+    </div>
+
+    <div class="eligibility-top">
+
+      <div>
+        <p class="eligibility-description">
+          卒業要件の総合判定
+        </p>
+
+        <p class="eligibility-sub">
+          合計・基盤教育・理工学基盤・専門科目を確認
+        </p>
+      </div>
+
+      <div
+        id="graduationOverallStatus"
+        class="eligibility-badge">
+        判定中
+      </div>
+
+    </div>
+
+    <div class="eligibility-grid">
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          合計
+        </span>
+
+        <strong>
+          <span id="graduationTotal">0</span>
+          <small>/ 124</small>
+        </strong>
+
+        <span
+          id="graduationTotalRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          基盤教育
+        </span>
+
+        <strong>
+          <span id="graduationBasic">0</span>
+          <small>/ 20</small>
+        </strong>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          理工学基盤
+        </span>
+
+        <strong>
+          <span id="graduationScience">0</span>
+          <small>/ 20</small>
+        </strong>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          専門科目
+        </span>
+
+        <strong>
+          <span id="graduationProfessional">0</span>
+          <small>/ 70</small>
+        </strong>
+      </div>
+
+    </div>
+
+    <div
+      id="graduationOverallMessage"
+      class="eligibility-message">
+    </div>
+
+  </section>
+
+
+  <!-- 卒着 -->
+  <section class="eligibility-section">
+
+    <div class="section-heading">
+      <p class="section-label">
+        RESEARCH ELIGIBILITY
+      </p>
+
+      <h2>卒着条件</h2>
+    </div>
+
+    <div class="eligibility-top">
+
+      <div>
+        <p class="eligibility-description">
+          卒業研究Ⅰ・機械工学輪講Ⅰに進むための条件
+        </p>
+
+        <p class="eligibility-sub">
+          履修要覧に基づく全条件を判定
+        </p>
+      </div>
+
+      <div
+        id="eligibilityStatus"
+        class="eligibility-badge">
+        判定中
+      </div>
+
+    </div>
+
+    <div class="eligibility-grid">
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          合計
+        </span>
+
+        <strong>
+          <span id="eligibilityTotal">0</span>
+          <small>/ 104</small>
+        </strong>
+
+        <span
+          id="eligibilityTotalRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          基盤教育
+        </span>
+
+        <strong>
+          <span id="eligibilityBasic">0</span>
+          <small>/ 18</small>
+        </strong>
+
+        <span
+          id="eligibilityBasicRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          理工学基盤
+        </span>
+
+        <strong>
+          <span id="eligibilityScience">0</span>
+          <small>/ 20</small>
+        </strong>
+
+        <span
+          id="eligibilityScienceRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          専門科目
+        </span>
+
+        <strong>
+          <span id="eligibilityProfessional">0</span>
+          <small>/ 53</small>
+        </strong>
+
+        <span
+          id="eligibilityProfessionalRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          専門必修
+        </span>
+
+        <strong>
+          <span id="eligibilityRequired">0</span>
+          <small>/ 7</small>
+        </strong>
+
+        <span
+          id="eligibilityRequiredRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          専門選択必修
+        </span>
+
+        <strong>
+          <span id="eligibilityElective">0</span>
+          <small>/ 24</small>
+        </strong>
+
+        <span
+          id="eligibilityElectiveRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+      <div class="eligibility-card">
+        <span class="eligibility-name">
+          基幹科目
+        </span>
+
+        <strong>
+          <span id="eligibilityCore">0</span>
+          <small>/ 8単位</small>
+        </strong>
+
+        <span
+          id="eligibilityCoreRemaining"
+          class="remaining">
+        </span>
+      </div>
+
+    </div>
+
+    <div
+      id="eligibilityMessage"
+      class="eligibility-message">
+    </div>
+
+    <p class="eligibility-note">
+      ※ 基盤教育・理工学基盤・専門科目の条件をすべて判定します。
+    </p>
+
+  </section>
+
+
+  <!-- 未修得必修 -->
+  <section>
+
+    <div class="section-heading">
+      <p class="section-label">
+        REQUIRED
+      </p>
+
+      <h2>未修得の必修科目</h2>
+    </div>
+
+    <div id="missingRequiredList"></div>
+
+  </section>
+
+
+  <!-- 科目一覧 -->
+  <section>
+
+    <div class="section-heading">
+      <p class="section-label">
+        SUBJECTS
+      </p>
+
+      <h2>履修科目</h2>
+    </div>
+
+    <div class="filter-label">
+      科目区分
+    </div>
+
+    <div class="tabs">
+
+      <button
+        class="category-tab active"
+        data-category="all">
+        すべて
+      </button>
+
+      <button
+        class="category-tab"
+        data-category="基盤教育科目">
+        基盤教育
+      </button>
+
+      <button
+        class="category-tab"
+        data-category="理工学基盤科目">
+        理工学基盤
+      </button>
+
+      <button
+        class="category-tab"
+        data-category="専門科目">
+        専門科目
+      </button>
+
+    </div>
+
+    <div class="filter-label">
+      配当学年
+    </div>
+
+    <div class="tabs">
+
+      <button
+        class="year-tab active"
+        data-year="all">
+        すべて
+      </button>
+
+      <button
+        class="year-tab"
+        data-year="1">
+        1年
+      </button>
+
+      <button
+        class="year-tab"
+        data-year="2">
+        2年
+      </button>
+
+      <button
+        class="year-tab"
+        data-year="3">
+        3年
+      </button>
+
+      <button
+        class="year-tab"
+        data-year="4">
+        4年
+      </button>
+
+    </div>
+
+    <div id="subjectList"></div>
+
+  </section>
+
+</main>
+
+<script src="subjects.js"></script>
+<script src="requirements.js"></script>
+<script src="script.js"></script>
+<script src="tools.js"></script>
+<script src="accuracy.js"></script>
+<script src="plannner.js"></script>
+<script src="projection-toggle.js"></script>
+<script src="timetable.js"></script>
+<script src="total-toggle.js"></script>
+<script src="mobile-nav.js"></script>
+<script src="data-maneger.js"></script>
+<script src="guide.js"></script>
+
+</body>
+</html>
