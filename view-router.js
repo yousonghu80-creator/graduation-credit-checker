@@ -21,6 +21,11 @@
         ".quick-summary"
       ),
 
+    nextActions:
+      document.querySelector(
+        ".next-actions-section"
+      ),
+
     basic:
       document.getElementById(
         "nav-credits"
@@ -69,6 +74,16 @@
         "nav-planner"
       ),
 
+    pace:
+      document.querySelector(
+        ".pace-panel"
+      ),
+
+    sequence:
+      document.querySelector(
+        ".sequence-panel"
+      ),
+
     timetable:
       document.getElementById(
         "nav-timetable"
@@ -91,14 +106,14 @@
   const viewItems = [
     ["home", "⌂", "ホーム"],
     ["judgment", "✓", "判定"],
-    ["planner", "＋", "計画"],
-    ["timetable", "▦", "時間割"],
+    ["planner", "▦", "計画・時間割"],
     ["subjects", "⌕", "科目"]
   ];
 
   const groups = {
     home: [
       elements.summary,
+      elements.nextActions,
       elements.basic,
       elements.science,
       elements.professional
@@ -112,10 +127,9 @@
     ],
 
     planner: [
-      elements.planner
-    ],
-
-    timetable: [
+      elements.planner,
+      elements.pace,
+      elements.sequence,
       elements.timetable
     ],
 
@@ -267,6 +281,10 @@
     updateUrl = true,
     smooth = true
   ) {
+    if (name === "timetable") {
+      name = "planner";
+    }
+
     if (!validViews.includes(name)) {
       name = "home";
     }

@@ -11,6 +11,14 @@
     if (subject.category === "基盤教育科目") {
       basic.total += credits;
 
+      if (subject.educationGroup === "foundation") {
+        basic.foundation += credits;
+      }
+
+      if (subject.educationGroup === "common") {
+        basic.common += credits;
+      }
+
       if (subject.field === "哲学・思想") {
         basic.philosophy += credits;
       }
@@ -288,6 +296,18 @@
         graduation.basicEducation.total
       ],
 
+      ...(graduation.basicEducation.foundation ? [[
+        "全学基盤教育",
+        data.basic.foundation,
+        graduation.basicEducation.foundation
+      ]] : []),
+
+      ...(graduation.basicEducation.common ? [[
+        "全学共通教育",
+        data.basic.common,
+        graduation.basicEducation.common
+      ]] : []),
+
       [
         "哲学・思想",
         data.basic.philosophy,
@@ -414,6 +434,18 @@
         eligibility.basicEducation
       ],
 
+      ...(eligibility.foundationEducation ? [[
+        "全学基盤教育",
+        data.basic.foundation,
+        eligibility.foundationEducation
+      ]] : []),
+
+      ...(eligibility.commonEducation ? [[
+        "全学共通教育",
+        data.basic.common,
+        eligibility.commonEducation
+      ]] : []),
+
       [
         "国際人の形成",
         data.basic.international,
@@ -443,6 +475,47 @@
         data.science.total,
         eligibility.scienceFoundation
       ],
+      [
+  "数学 必修",
+  data.science.mathRequired,
+  graduation.scienceFoundation
+    .mathematics.required
+],
+
+[
+  "数学 選択必修",
+  data.science.mathElective,
+  graduation.scienceFoundation
+    .mathematics.requiredElective
+],
+
+[
+  "物理 必修",
+  data.science.physicsRequired,
+  graduation.scienceFoundation
+    .physics.required
+],
+
+[
+  "物理 選択必修",
+  data.science.physicsElective,
+  graduation.scienceFoundation
+    .physics.requiredElective
+],
+
+[
+  "化学",
+  data.science.chemistry,
+  graduation.scienceFoundation
+    .chemistry.minimum
+],
+
+[
+  "情報処理 必修",
+  data.science.information,
+  graduation.scienceFoundation
+    .information.required
+],
 
       [
         "専門科目",

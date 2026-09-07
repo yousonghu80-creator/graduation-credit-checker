@@ -1,10 +1,10 @@
 const $ = id => document.getElementById(id);
 
 const oldCompleted =
-  JSON.parse(localStorage.getItem("completedSubjects")) || [];
+  appStorage.readArray("completedSubjects");
 
 let subjectStatuses =
-  JSON.parse(localStorage.getItem("subjectStatuses")) || {};
+  appStorage.readObject("subjectStatuses");
 
 /*
 以前チェックした科目を「修得済み」として引き継ぐ
@@ -377,6 +377,8 @@ localStorage.removeItem(
 function basicData(projected = false) {
   const data = {
     total: 0,
+    foundation: 0,
+    common: 0,
     philosophy: 0,
     international: 0,
     foreignLanguage: 0,
@@ -391,6 +393,14 @@ function basicData(projected = false) {
     )
     .forEach(subject => {
       data.total += subject.credits;
+
+      if (subject.educationGroup === "foundation") {
+        data.foundation += subject.credits;
+      }
+
+      if (subject.educationGroup === "common") {
+        data.common += subject.credits;
+      }
 
       if (
         subject.field === "哲学・思想"
@@ -564,6 +574,26 @@ function basicOK(
           ? requirement.basicEducation
           : requirement.total
       ) &&
+
+    (
+      eligibility || !requirement.foundation ||
+      data.foundation >= requirement.foundation
+    ) &&
+
+    (
+      eligibility || !requirement.common ||
+      data.common >= requirement.common
+    ) &&
+
+    (
+      !eligibility || !requirement.foundationEducation ||
+      data.foundation >= requirement.foundationEducation
+    ) &&
+
+    (
+      !eligibility || !requirement.commonEducation ||
+      data.common >= requirement.commonEducation
+    ) &&
 
     (
       eligibility ||
@@ -909,8 +939,7 @@ function eligibilityOK(data) {
 
     basicOK(data.basic, true) &&
 
-    data.science.total >=
-      requirement.scienceFoundation &&
+    scienceOK(data.science) &&
 
     professionalOK(
       data.professional,

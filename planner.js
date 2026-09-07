@@ -1,16 +1,19 @@
 (() => {
 
   let plannedTerms =
-    JSON.parse(
-      localStorage.getItem("plannedTerms")
-    ) || {};
+    appStorage.readObject("plannedTerms");
+
+  const now = new Date();
 
   const currentYear =
-    new Date().getFullYear();
+    now.getMonth() < 3
+      ? now.getFullYear() - 1
+      : now.getFullYear();
 
   const defaultTerm =
     `${currentYear}-${
-      new Date().getMonth() < 7
+      now.getMonth() >= 3 &&
+      now.getMonth() <= 8
         ? "spring"
         : "fall"
     }`;
@@ -107,6 +110,11 @@
       border-radius: 11px;
     }
 
+    .term-card.active {
+      border-color: #8b72d9;
+      box-shadow: 0 0 0 2px rgba(139, 114, 217, 0.12);
+    }
+
     .term-card.warning {
       border-color: #e3a236;
       background: #fffaf0;
@@ -133,6 +141,26 @@
       color: #b46d00;
       font-size: 11px;
       font-weight: 700;
+    }
+
+    .term-timetable-button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border: 1px solid #ded6f5;
+      border-radius: 8px;
+      background: #f8f5ff;
+      color: #6548b8;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .term-timetable-button:hover,
+    .term-timetable-button:focus-visible {
+      background: #eee8ff;
+      outline: none;
     }
 
     .planner-empty {
@@ -331,6 +359,10 @@
           );
 
           renderPlanner();
+
+          document.dispatchEvent(
+            new CustomEvent("planner:data-changed")
+          );
         }
       );
 
@@ -352,6 +384,10 @@
           );
 
           renderPlanner();
+
+          document.dispatchEvent(
+            new CustomEvent("planner:data-changed")
+          );
         }
       );
 
@@ -377,11 +413,11 @@
     <div class="planner-header">
 
       <div>
-        <h3>履修計画</h3>
+        <h3>履修計画・時間割</h3>
 
         <p>
-          「履修予定」にした科目を
-          学期ごとに集計します
+          学期ごとの履修計画から
+          週間時間割を作成できます
         </p>
       </div>
 
@@ -539,6 +575,14 @@
                   : ""
               }
 
+              <button
+                class="term-timetable-button"
+                type="button"
+                data-timetable-term="${term}"
+              >
+                この学期の時間割を編集
+              </button>
+
             </div>
           `;
         })
@@ -550,6 +594,59 @@
       </div>
     `;
   }
+
+  document
+    .getElementById("termPlan")
+    .addEventListener("click", event => {
+      const button = event.target.closest(
+        ".term-timetable-button"
+      );
+
+      if (!button) return;
+
+      document.dispatchEvent(
+        new CustomEvent("planner:term-selected", {
+          detail: {
+            term: button.dataset.timetableTerm
+          }
+        })
+      );
+
+      document
+        .querySelector(".timetable-panel")
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+    });
+
+  document.addEventListener(
+    "timetable:term-changed",
+    event => {
+      document
+        .querySelectorAll(".term-card")
+        .forEach(card => {
+          const button = card.querySelector(
+            ".term-timetable-button"
+          );
+
+          card.classList.toggle(
+            "active",
+            button?.dataset.timetableTerm ===
+              event.detail.term
+          );
+        });
+    }
+  );
+
+  document.addEventListener(
+    "planner:data-changed",
+    () => {
+      plannedTerms =
+        appStorage.readObject("plannedTerms");
+      renderPlanner();
+    }
+  );
 
 
   /*

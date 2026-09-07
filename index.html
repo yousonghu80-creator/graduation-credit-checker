@@ -9,6 +9,7 @@
   >
 
   <title>卒業単位チェッカー</title>
+  <meta name="theme-color" content="#123a73">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile.css">
 </head>
@@ -18,9 +19,16 @@
 <header class="top-header">
   <div class="header-inner">
 
-    <p class="service-label">
-      GRADUATION PLANNER
-    </p>
+    <div class="header-kicker">
+      <p class="service-label">
+        GRADUATION PLANNER
+      </p>
+
+      <span class="autosave-badge">
+        <span class="autosave-dot"></span>
+        この端末に自動保存
+      </span>
+    </div>
 
     <h1>卒業単位チェッカー</h1>
 
@@ -713,12 +721,22 @@
 
 </main>
 
+<script src="academic-year.js"></script>
+<script src="storage-utils.js"></script>
 <script src="subjects.js"></script>
+<script src="subjects-2025.js"></script>
+<script src="requirements-2024.js"></script>
+<script src="requirements-2025.js"></script>
 <script src="requirements.js"></script>
+<script src="data-validator.js"></script>
 <script src="script.js"></script>
 <script src="tools.js"></script>
 <script src="accuracy.js"></script>
 <script src="planner.js"></script>
+<script src="pace-engine.js"></script>
+<script src="pace-planner.js"></script>
+<script src="sequence-rules.js"></script>
+<script src="sequence-check.js"></script>
 <script src="projection-toggle.js"></script>
 <script src="timetable.js"></script>
 <script src="total-toggle.js"></script>
@@ -731,8 +749,14 @@
 <script src="condition-links.js"></script>
 <script src="summary.js"></script>
 <script src="filter-context.js"></script>
+<script src="required-status.js"></script>
+<script src="next-actions.js"></script>
 <script src="view-router.js"></script>
 <script src="pagination.js"></script>
+<script src="design-polish.js"></script>
+<script src="academic-year-ui.js"></script>
+<script src="source-info.js"></script>
+<script src="mobile-polish.js"></script>
 
 </body>
 </html>

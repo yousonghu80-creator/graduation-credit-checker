@@ -34,8 +34,7 @@
   const items = [
     ["nav-credits", "▤", "単位"],
     ["nav-judgment", "✓", "判定"],
-    ["nav-planner", "＋", "計画"],
-    ["nav-timetable", "▦", "時間割"],
+    ["nav-planner", "▦", "計画・時間割"],
     ["nav-subjects", "⌕", "科目"]
   ];
 
@@ -67,7 +66,7 @@
         bottom: 8px;
         left: 8px;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         padding: 6px;
         background: rgba(255, 255, 255, 0.94);
         border: 1px solid #e0e4ea;

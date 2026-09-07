@@ -36,43 +36,23 @@
     return;
   }
 
-  function readObject(key) {
-    try {
-      const value =
-        JSON.parse(
-          localStorage.getItem(key)
-        );
-
-      if (
-        value &&
-        typeof value === "object" &&
-        !Array.isArray(value)
-      ) {
-        return value;
-      }
-
-      return {};
-    } catch {
-      return {};
-    }
-  }
-
   exportButton.addEventListener(
     "click",
     () => {
       const backup = {
         app: "卒業単位チェッカー",
         version: 5,
+        admissionYear: academicYear,
         savedAt: new Date().toISOString(),
 
         subjectStatuses:
-          readObject("subjectStatuses"),
+          appStorage.readObject("subjectStatuses"),
 
         plannedTerms:
-          readObject("plannedTerms"),
+          appStorage.readObject("plannedTerms"),
 
         scheduleData:
-          readObject("scheduleData"),
+          appStorage.readObject("scheduleData"),
 
         otherCredits:
           Number(
@@ -113,7 +93,7 @@
       link.href = url;
 
       link.download =
-        `卒業単位チェッカー_${
+        `卒業単位チェッカー_${academicYear}年度_${
           new Date()
             .toISOString()
             .slice(0, 10)
@@ -162,6 +142,14 @@
             "object"
         ) {
           throw new Error();
+        }
+
+        const backupYear = Number(backup.admissionYear || 2024);
+
+        if (backupYear !== academicYear) {
+          alert(`${backupYear}年度入学生用のバックアップです。入学年度を切り替えてから復元してください。`);
+          importFile.value = "";
+          return;
         }
 
         localStorage.setItem(
