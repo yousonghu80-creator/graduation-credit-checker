@@ -1,0 +1,219 @@
+/* スマホ表示専用の追加調整 */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+button,
+select,
+input {
+  touch-action: manipulation;
+}
+
+@media (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .header-inner {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .university {
+    line-height: 1.55;
+  }
+
+  main {
+    margin: 14px auto 55px;
+    padding: 0 10px;
+  }
+
+  section {
+    margin-bottom: 12px;
+    padding: 17px 14px;
+    border-radius: 14px;
+  }
+
+  .dashboard-title {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dashboard-title h2 {
+    font-size: 18px;
+  }
+
+  .total-progress {
+    flex-shrink: 0;
+  }
+
+  .total-progress strong {
+    font-size: 27px;
+  }
+
+  .progress-bar {
+    margin: 17px 0 18px;
+  }
+
+  .status-grid,
+  .eligibility-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .status-card,
+  .eligibility-card {
+    min-width: 0;
+    padding: 13px 11px;
+  }
+
+  .status-card p {
+    min-height: 30px;
+    margin-bottom: 7px;
+    line-height: 1.45;
+  }
+
+  .status-card strong {
+    font-size: 21px;
+  }
+
+  .eligibility-card strong {
+    font-size: 20px;
+  }
+
+  .eligibility-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tabs {
+    margin-right: -14px;
+    padding: 2px 14px 7px 0;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-tab,
+  .year-tab {
+    min-height: 40px;
+    padding: 9px 15px;
+  }
+
+  .utility-panel,
+  .planner-panel,
+  .timetable-panel {
+    padding: 14px;
+    border-radius: 13px;
+  }
+
+  .search-box input {
+    min-height: 44px;
+  }
+
+  .utility-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .utility-button {
+    min-height: 42px;
+  }
+
+  .utility-button.danger {
+    grid-column: 1 / -1;
+  }
+
+  .planner-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .planner-total {
+    width: fit-content;
+  }
+
+  .projection-toggle {
+    justify-content: flex-start;
+    min-height: 42px;
+  }
+
+  .term-card {
+    padding: 12px;
+  }
+
+  .subject-grid {
+    gap: 8px;
+  }
+
+  .subject-card {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 13px;
+  }
+
+  .subject-info {
+    width: 100%;
+  }
+
+  .subject-name {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .subject-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .subject-status-select,
+  .plan-term-select {
+    min-height: 42px;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .schedule-row select,
+  .schedule-row input {
+    min-height: 42px;
+    font-size: 12px;
+  }
+
+  .timetable-scroll {
+    margin-right: -14px;
+    padding-right: 14px;
+  }
+
+  .missing-card {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .status-grid,
+  .eligibility-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-title {
+    flex-direction: column;
+  }
+
+  .total-progress {
+    text-align: left;
+  }
+
+  .subject-controls {
+    grid-template-columns: 1fr;
+  }
+}
