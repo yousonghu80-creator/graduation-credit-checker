@@ -2,9 +2,19 @@
   const nativeGet = Storage.prototype.getItem;
   const nativeSet = Storage.prototype.setItem;
   const nativeRemove = Storage.prototype.removeItem;
-  const selected = Number(nativeGet.call(localStorage, "selectedAcademicYear") || 2024);
+  const requestedYear = Number(
+    new URLSearchParams(location.search).get("year")
+  );
+
+  const selected = [2024, 2025].includes(requestedYear)
+    ? requestedYear
+    : Number(nativeGet.call(localStorage, "selectedAcademicYear") || 2024);
 
   window.academicYear = [2024, 2025].includes(selected) ? selected : 2024;
+
+  if ([2024, 2025].includes(requestedYear)) {
+    nativeSet.call(localStorage, "selectedAcademicYear", String(requestedYear));
+  }
 
   const managedKeys = new Set([
     "subjectStatuses", "completedSubjects", "plannedTerms", "scheduleData",
@@ -48,6 +58,9 @@
     const next = Number(year);
     if (![2024, 2025].includes(next) || next === window.academicYear) return;
     nativeSet.call(localStorage, "selectedAcademicYear", String(next));
-    location.reload();
+
+    const url = new URL(location.href);
+    url.searchParams.set("year", String(next));
+    location.assign(url.href);
   };
 })();

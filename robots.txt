@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yousonghu80-creator.github.io/graduation-credit-checker/sitemap.xml
